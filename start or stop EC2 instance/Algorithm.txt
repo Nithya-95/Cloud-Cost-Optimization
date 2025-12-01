@@ -1,6 +1,6 @@
-import boto3 module - boto3 is a python package, used to interact with AWS API.
+import **boto3** module - boto3 is a python package, used to interact with AWS API.
 
-🧠 ** Core Logic **
+🧠 **Core Logic**
 1️⃣ **Describe EC2 Instances**
 * The system retrieves a list of EC2 instance IDs programmatically.
 * DescribeInstances API is used to fetch all instances.
