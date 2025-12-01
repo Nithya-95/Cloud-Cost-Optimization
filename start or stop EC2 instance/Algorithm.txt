@@ -1,0 +1,56 @@
+import boto3 module - boto3 is a python package, used to interact with AWS API.
+
+🧠 ** Core Logic **
+1️⃣ **Describe EC2 Instances**
+* The system retrieves a list of EC2 instance IDs programmatically.
+* DescribeInstances API is used to fetch all instances.
+*Filters can be applied based on your organizational needs, such as:
+    Tags (Environment=Dev, AutoSchedule=Yes, etc.)
+    Instance state (running, stopped)
+    Specific VPCs, subnets, or security groups
+This ensures only the appropriate instances are targeted for scheduling.
+
+2️⃣ **Automated Start/Stop via EventBridge Scheduler**
+* EventBridge Scheduler triggers a Lambda function on a cron-based schedule.
+* Lambda uses the previously collected instance IDs.
+* Based on the EventBridge rule:
+    StartSchedule → Lambda calls StartInstances
+    StopSchedule → Lambda calls StopInstances
+This enables fully automated lifecycle management without manual intervention.
+
+-------------------------------------------------------------------------------
+example of describe instances output:
+{
+"Reservations": [
+{
+"Groups": []
+},
+{
+"Instances": [
+{
+"AmiLaunchIndex": 0,
+"ImageId": "ami-0abcdef1234567890",
+"InstanceId": "i-1234567890abcdef0",
+"InstanceType": "t3.nano",
+"KeyName": "my-key-pair",
+"LaunchTime": "2022-11-15T10:48:59+00:00",
+"Monitoring": {
+"State": "disabled"
+},
+"Placement": {
+"AvailabilityZone": "us-east-2a",
+"GroupName": "",
+"Tenancy": "default"
+},
+"PrivateDnsName": "ip-10-0-0-157.us-east-2.compute.internal",
+"PrivateIpAddress": "10-0-0-157",
+"ProductCodes": [],
+"PublicDnsName": "ec2-34-253-223-13.us-east-2.compute.amazonaws.com",
+"PublicIpAddress": "34.253.223.13",
+"State": {
+"State": "running"
+}
+}
+]
+}
+}
