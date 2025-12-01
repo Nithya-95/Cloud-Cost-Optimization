@@ -1,7 +1,7 @@
-import **boto3** module - boto3 is a python package, used to interact with AWS API.
+import boto3 module - boto3 is a python package, used to interact with AWS API.
 
-🧠 **Core Logic**
-1️⃣ **Describe EC2 Instances**
+🧠 Core Logic
+1️⃣ Describe EC2 Instances
 * The system retrieves a list of EC2 instance IDs programmatically.
 * DescribeInstances API is used to fetch all instances.
 *Filters can be applied based on your organizational needs, such as:
@@ -10,7 +10,7 @@ import **boto3** module - boto3 is a python package, used to interact with AWS A
     Specific VPCs, subnets, or security groups
 This ensures only the appropriate instances are targeted for scheduling.
 
-2️⃣ **Automated Start/Stop via EventBridge Scheduler**
+2️⃣ Automated Start/Stop via EventBridge Scheduler
 * EventBridge Scheduler triggers a Lambda function on a cron-based schedule.
 * Lambda uses the previously collected instance IDs.
 * Based on the EventBridge rule:
